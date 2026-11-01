@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Insurance Deductible Calculator — $500 vs $1,000 vs $2,000</title>
+<meta name="description" content="Calculate the break-even time between a $500, $1,000, or $2,000 auto insurance deductible vs annual premium savings. Decide if raising your deductible is worth it.">
+<link rel="canonical" href="https://sebiglesias.com.ar/insurance-deductible/">
+<meta name="theme-color" content="#06b6d4">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2BNDBQP0W7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2BNDBQP0W7');
+</script>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Car Insurance Deductible Calculator — $500 vs $1,000 vs $2,000">
+<meta property="og:description" content="Calculate the break-even time between a $500, $1,000, or $2,000 auto insurance deductible vs annual premium savings. Decide if raising your deductible is worth it.">
+<meta property="og:url" content="https://sebiglesias.com.ar/insurance-deductible/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Car Insurance Deductible Calculator — $500 vs $1,000 vs $2,000">
+<meta name="twitter:description" content="Calculate the break-even time between a $500, $1,000, or $2,000 auto insurance deductible vs annual premium savings. Decide if raising your deductible is worth it.">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<meta name="google-adsense-account" content="ca-pub-3381238987477190">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3381238987477190" crossorigin="anonymous"></script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Insurance Deductible Calculator \u2014 $500 vs $1,000 vs $2,000",
+    "description": "Calculate the break-even time between a $500, $1,000, or $2,000 auto insurance deductible vs annual premium savings. Decide if raising your deductible is worth it.",
+    "url": "https://sebiglesias.com.ar/insurance-deductible/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How often does the average American file an auto insurance claim?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "According to the Insurance Information Institute (III), the average private passenger car driver files a collision claim once every 10 to 12 years and a comprehensive claim once every 17 years."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I don't have $1,000 in savings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Do not raise your deductible if paying $1,000 out-of-pocket would force you to take on high-interest credit card debt or delay vehicle repairs required to commute to work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I increase my comprehensive or collision deductible?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Comprehensive (theft, hail, deer, cracked windshield) is generally cheaper to keep at a lower deductible ($250-$500), while collision deductible can comfortably be raised to $1,000 for substantial premium discounts."
+        }
+      }
+    ]
+  }
+]
+</script>
+</head>
+<body>
+<div class="container">
+  
+    <header>
+      <span class="badge">Auto & Home Insurance</span>
+      <h1>Insurance Deductible Calculator</h1>
+      <p class="subtitle">Evaluate whether raising your deductible from $500 to $1,000 or $2,000 pays off in annual premium savings.</p>
+    </header>
+    <div class="grid">
+      <div class="card">
+        <h2>Policy Comparison</h2>
+        <div class="form-group">
+          <label for="currentDeductible">Current Deductible <span>USD</span></label>
+          <div class="input-wrapper">
+            <span class="input-prefix">$</span>
+            <input type="number" id="currentDeductible" class="has-prefix" value="500" min="100" max="5000" step="50">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="newDeductible">Proposed Higher Deductible <span>USD</span></label>
+          <div class="input-wrapper">
+            <span class="input-prefix">$</span>
+            <input type="number" id="newDeductible" class="has-prefix" value="1000" min="500" max="10000" step="100">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="premiumSavings">Annual Premium Savings <span>USD/year</span></label>
+          <div class="input-wrapper">
+            <span class="input-prefix">$</span>
+            <input type="number" id="premiumSavings" class="has-prefix" value="180" min="10" max="3000" step="10">
+          </div>
+          <input type="range" id="premiumSavingsRange" min="20" max="800" step="10" value="180">
+        </div>
+      </div>
+      <div class="card">
+        <h2>Break-Even Horizon</h2>
+        <div class="kpi-grid">
+          <div class="kpi-card highlight">
+            <div class="kpi-label">Break-Even Horizon</div>
+            <div class="kpi-value accent" id="breakevenMonths">0 mo</div>
+          </div>
+          <div class="kpi-card highlight">
+            <div class="kpi-label">Extra Risk (Out of Pocket)</div>
+            <div class="kpi-value" id="extraRisk">$500</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">5-Year Savings (No Claims)</div>
+            <div class="kpi-value green" id="fiveYearSave">$900</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">5-Year Net (With 1 Claim)</div>
+            <div class="kpi-value" id="fiveYearClaim">$400</div>
+          </div>
+        </div>
+        <div id="decisionCard" style="background: var(--bg-card-inner); padding: 1rem; border-radius: var(--radius-md); font-size: 0.88rem; line-height: 1.5; color: var(--text-muted);">
+          Calculating...
+        </div>
+      </div>
+    </div>
+    
+
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    
+        <div class="faq-item">
+          <h3>How often does the average American file an auto insurance claim?</h3>
+          <p>According to the Insurance Information Institute (III), the average private passenger car driver files a collision claim once every 10 to 12 years and a comprehensive claim once every 17 years.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What if I don't have $1,000 in savings?</h3>
+          <p>Do not raise your deductible if paying $1,000 out-of-pocket would force you to take on high-interest credit card debt or delay vehicle repairs required to commute to work.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Should I increase my comprehensive or collision deductible?</h3>
+          <p>Comprehensive (theft, hail, deer, cracked windshield) is generally cheaper to keep at a lower deductible ($250-$500), while collision deductible can comfortably be raised to $1,000 for substantial premium discounts.</p>
+        </div>
+  </section>
+
+  <div class="cross-links">
+    <a href="https://sebiglesias.com.ar/car-payoff-calculator/">🚗 Car Payoff</a>
+    <a href="https://sebiglesias.com.ar/credit-card-payoff/">💳 Credit Card Payoff</a>
+    <a href="https://sebiglesias.com.ar/insurance-deductible/">🛡️ Insurance Deductible</a>
+    <a href="https://sebiglesias.com.ar/rent-vs-buy-calculator/">🏡 Rent vs Buy</a>
+    <a href="https://sebiglesias.com.ar/concrete-calculator/">🧱 Concrete Calculator</a>
+    <a href="https://sebiglesias.com.ar/moving-truck-calculator/">📦 Moving Truck</a>
+    <a href="https://sebiglesias.com.ar/ac-btu-calculator/">❄️ AC BTU Sizing</a>
+    <a href="https://sebiglesias.com.ar/mulch-calculator/">🌱 Mulch Calculator</a>
+    <a href="https://sebiglesias.com.ar/salary-to-hourly/">💼 Salary to Hourly</a>
+    <a href="https://sebiglesias.com.ar/paint-calculator/">🎨 Paint Calculator</a>
+  </div>
+
+  <footer>
+    <p>© 2026 Free Web Utility. Created by <a href="https://sebiglesias.com.ar">Sebastián Iglesias</a>. Free & Fast.</p>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
