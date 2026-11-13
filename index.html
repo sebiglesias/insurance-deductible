@@ -6,6 +6,17 @@
 <title>Car Insurance Deductible Calculator — $500 vs $1,000 vs $2,000</title>
 <meta name="description" content="Calculate the break-even time between a $500, $1,000, or $2,000 auto insurance deductible vs annual premium savings. Decide if raising your deductible is worth it.">
 <link rel="canonical" href="https://sebiglesias.com.ar/insurance-deductible/">
+  <link rel="alternate" hreflang="en" href="https://sebiglesias.com.ar/insurance-deductible/">
+  <link rel="alternate" hreflang="es" href="https://sebiglesias.com.ar/insurance-deductible/?lang=es">
+  <link rel="alternate" hreflang="de" href="https://sebiglesias.com.ar/insurance-deductible/?lang=de">
+  <link rel="alternate" hreflang="fr" href="https://sebiglesias.com.ar/insurance-deductible/?lang=fr">
+  <link rel="alternate" hreflang="it" href="https://sebiglesias.com.ar/insurance-deductible/?lang=it">
+  <link rel="alternate" hreflang="pt" href="https://sebiglesias.com.ar/insurance-deductible/?lang=pt">
+  <link rel="alternate" hreflang="nl" href="https://sebiglesias.com.ar/insurance-deductible/?lang=nl">
+  <link rel="alternate" hreflang="sv" href="https://sebiglesias.com.ar/insurance-deductible/?lang=sv">
+  <link rel="alternate" hreflang="da" href="https://sebiglesias.com.ar/insurance-deductible/?lang=da">
+  <link rel="alternate" hreflang="pl" href="https://sebiglesias.com.ar/insurance-deductible/?lang=pl">
+  <link rel="alternate" hreflang="x-default" href="https://sebiglesias.com.ar/insurance-deductible/">
 <meta name="theme-color" content="#06b6d4">
 <meta name="robots" content="index, follow, max-image-preview:large">
 
@@ -89,6 +100,18 @@
 <div class="container">
   
     <header>
+<div style='display:flex;justify-content:flex-end;margin-bottom:.5rem'><select id="lang-select" aria-label="Language" style="background:#24221C;border:1px solid rgba(242,239,230,.18);color:#F2EFE6;font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:3px 6px;border-radius:3px;cursor:pointer;margin-left:auto">
+  <option value="en">🇺🇸 EN</option>
+  <option value="es">🇪🇸 ES</option>
+  <option value="de">🇩🇪 DE</option>
+  <option value="fr">🇫🇷 FR</option>
+  <option value="it">🇮🇹 IT</option>
+  <option value="pt">🇵🇹 PT</option>
+  <option value="nl">🇳🇱 NL</option>
+  <option value="sv">🇸🇪 SV</option>
+  <option value="da">🇩🇰 DA</option>
+  <option value="pl">🇵🇱 PL</option>
+</select></div>
       <span class="badge">Auto & Home Insurance</span>
       <h1>Insurance Deductible Calculator</h1>
       <p class="subtitle">Evaluate whether raising your deductible from $500 to $1,000 or $2,000 pays off in annual premium savings.</p>
@@ -260,5 +283,41 @@
 </div>
 
 <script src="app.js"></script>
+
+<script>
+/* I18N_AUTO_ENGINE */
+(function(){
+  const DICT = {"en": {"title": "Insurance Deductible Break-Even Calculator<span class='accent'>.</span>", "sub": "Compare $500 vs $1,000+ deductibles, premium savings & risk horizon"}, "es": {"title": "Calculadora de Franquicia y Deducible de Seguro<span class='accent'>.</span>", "sub": "Compará cuota mensual vs franquicia y calculá en cuántos meses se amortiza"}, "de": {"title": "Versicherung Selbstbeteiligung Rechner<span class='accent'>.</span>", "sub": "Beitragsersparnis vs. höhere Selbstbeteiligung: Ab wann lohnt sich der Wechsel?"}, "fr": {"title": "Calculateur Franchise Assurance Auto & Habitation<span class='accent'>.</span>", "sub": "Comparez économie de prime annuelle et hausse de franchise"}, "it": {"title": "Calcolatore Franchigia Assicurazione Convenienza<span class='accent'>.</span>", "sub": "Confronta il risparmio sul premio con la franchigia più alta"}, "pt": {"title": "Calculadora de Franquia de Seguro Vale a Pena<span class='accent'>.</span>", "sub": "Compare franquia reduzida vs normal e veja o ponto de equilíbrio"}, "nl": {"title": "Eigen Risico Verzekering Break-Even Calculator<span class='accent'>.</span>", "sub": "Vergelijk premiekorting met hoger vrijwillig eigen risico"}, "sv": {"title": "Försäkring Självrisk Break-Even Kalkylator<span class='accent'>.</span>", "sub": "Jämför lägre premie mot högre självrisk och se brytpunkten i månader"}, "da": {"title": "Forsikring Selvrisiko Break-Even Beregner<span class='accent'>.</span>", "sub": "Sammenlign præmiebesparelse med højere selvrisiko"}, "pl": {"title": "Kalkulator Udziału Własnego w Ubezpieczeniu<span class='accent'>.</span>", "sub": "Sprawdź po ilu miesiącach niższa składka zrekompensuje wyższą franszyzę"}};
+  const h1El = document.querySelector('h1');
+  const subEl = document.querySelector('.sub') || document.querySelector('header p');
+  const selEl = document.getElementById('lang-select');
+  function applyLang(lang) {
+    const entry = DICT[lang] || DICT.en;
+    document.documentElement.lang = lang;
+    if (h1El && entry.title) h1El.innerHTML = entry.title;
+    if (subEl && entry.sub) subEl.textContent = entry.sub;
+    if (lang !== 'en' && entry.sub) {
+      document.title = (h1El ? h1El.textContent : '') + ' — ' + entry.sub;
+    }
+  }
+  const params = new URLSearchParams(window.location.search);
+  const init = params.get('lang') || localStorage.getItem('insurance-deductible-lang') || 'en';
+  const valid = DICT[init] ? init : 'en';
+  if (selEl) {
+    selEl.value = valid;
+    selEl.addEventListener('change', function(e) {
+      const nl = e.target.value;
+      localStorage.setItem('insurance-deductible-lang', nl);
+      const u = new URL(window.location.href);
+      if (nl === 'en') u.searchParams.delete('lang');
+      else u.searchParams.set('lang', nl);
+      window.history.replaceState({}, '', u);
+      applyLang(nl);
+    });
+  }
+  applyLang(valid);
+})();
+</script>
+
 </body>
 </html>
